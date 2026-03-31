@@ -66,6 +66,19 @@
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease;
 }
+.primary{
+    background-color: var(--color-primary);
+    color:var(--color-bg-main)
+}
+.btn{
+ border: none;
+ border-radius: var(--radius-md);
+ outline: none;
+ cursor: pointer;
+}
+
+
+/* cotainer design */
 .system__container{
     background-color: var(--color-bg-container);
     height: 100vh;
@@ -74,14 +87,91 @@
     flex-direction: column;
     gap: var(--space-lg);
 }
+
+
+/* header design */
 .system__header{
     background-color: var(--color-bg-main);
     border-radius: var(--radius-xl);
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--space-sm) var(--space-lg);
 }
+.system__create-btn{
+    padding: var(--space-sm) var(--space-xl) ;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+}
+
+
+
+
+
+
+
+/* main section design */
 .system__main{
     background-color: var(--color-bg-main);
     border-radius: var(--radius-xl);
     flex:9;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-lg);
+    gap:var(--space-2xl)
+}
+.main__filter{
+    flex:1;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-lg);
+    gap:var(--space-lg);
+    font-weight: var(--font-weight-regular)
+}
+.filterBtn__container{
+    display: flex;
+    gap:var(--space-md)
+}
+.filterBtn,.editBtn{
+ padding: var(--space-sm) var(--space-lg);
+ font-size: var(--font-size-md);
+ background-color: var(--color-border);
+}
 
+
+.main__card-container{
+    flex:9;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-wrap: wrap;
+    gap:var(--space-md)
+}
+.main__card{
+      height: 35vh;
+      max-width: 200px;
+      width: 100%;      
+      background: var(--color-bg-card);
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    
+}
+.card-img{
+    height: 50%;
+    img{
+        border-radius: var(--radius-sm);
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+.card-desc{
+    display: flex;
+    flex-direction: column;
+    gap:var(--space-sm)
 }
