@@ -1,5 +1,9 @@
 export function initCreate() {
     const cardParent=document.querySelector(".main__card-container");
+    if(localStorage.length===0)
+    {
+        cardParent.innerHTML="<h2>No items to show</h2>"
+    }
     for(let i = 0;i<localStorage.length;i++)
     {
         const key=localStorage.key(i);
