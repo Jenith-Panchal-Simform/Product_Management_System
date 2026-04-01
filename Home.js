@@ -1,4 +1,4 @@
-export function initCreate() {
+export function initHome() {
     const cardParent=document.querySelector(".main__card-container");
     if(localStorage.length===0)
     {
@@ -17,10 +17,12 @@ export function initCreate() {
                 <p>Name: ${value.name}</p>
                 <p>Price: ${value.price}</p>
                 <p class ="scroll-text">Desc: ${value.desc}</p>
-                <button type="button" aria-pressed="false" class="editBtn btn">Edit</button>
+                <button type="button" aria-pressed="false" class="editBtn btn" >Edit</button>
             </div>
         </div>`;
         cardParent.innerHTML += markup;
         console.log(key,value)
     }
+    const editBtn=document.querySelectorAll(".editBtn");
+
 }

@@ -34,7 +34,7 @@ const Router = {
       return await res.text();
     }
 
-    // 🔹 Route map
+    // Route map
     const routes = {
       "/": Home,
       "/create": Create,
@@ -54,13 +54,13 @@ const Router = {
         }
          if (path === "/") {
           const module = await import("./Home.js");
-          module.initCreate();
+          module.initHome();
         }
       } else {
         const html = await Home();
         app.innerHTML = html;
         const module = await import("./Home.js");
-          module.initCreate();
+          module.initHome();
       }
     }
 
