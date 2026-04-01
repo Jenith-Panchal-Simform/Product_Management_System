@@ -40,6 +40,11 @@ const Router = {
       "/create": Create,
     };
 
+    //params get for edit
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return Object.fromEntries(params.entries());
+    }
     //  Render function
     async function render(path) {
       const app = document.querySelector(".app");
@@ -50,17 +55,19 @@ const Router = {
         app.innerHTML = html;
         if (path === "/create") {
           const module = await import("./CreateHandler.js");
-          module.initCreate();
+          const params = new URLSearchParams(window.location.search);
+          const id = params.get("id");
+          module.initCreate(id);
         }
-         if (path === "/") {
+        if (path === "/") {
           const module = await import("./Home.js");
-          module.initHome();
+          module.initHome(render);
         }
       } else {
         const html = await Home();
         app.innerHTML = html;
         const module = await import("./Home.js");
-          module.initHome();
+        module.initHome(render);
       }
     }
 

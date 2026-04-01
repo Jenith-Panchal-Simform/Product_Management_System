@@ -1,17 +1,35 @@
-export function initCreate() {
-  console.log("Create page JS loaded");
+export function initCreate(id) {
 let form=document.querySelector(".system__form");
+const idInput = form.elements["id"];
+const nameInput = form.elements["name"];
+const priceInput = form.elements["price"];
+const descInput = form.elements["desc"];
+const imageInput = form.elements["image"];
+
+//for edit
+if (id) {
+  const data = JSON.parse(localStorage.getItem(id));
+  if (data) {
+    idInput.value = id;
+    nameInput.value = data.name;
+    priceInput.value = data.price;
+    descInput.value = data.desc;
+    imageInput.value = data.image;
+  }
+}
+
 form.addEventListener("submit",(e)=>{
     e.preventDefault()
-    const id=form.elements["id"].value;
-    const name =form.elements['name'].value;
-    const price=form.elements["price"].value;
-    const desc=form.elements["desc"].value
-    const image=form.elements["image"].value
-
+    console.log("Form submitted")
+    const id = idInput.value;
+    const name = nameInput.value;
+    const price = priceInput.value;
+    const desc = descInput.value;
+    const image = imageInput.value;
     localStorage.setItem(id,JSON.stringify({name,price,desc,image}))
     console.log(id,name,price,desc,image)
     form.reset();
 })
+
 
 }
