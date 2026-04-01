@@ -1,0 +1,33 @@
+.system__form{
+    background-color: var(--color-bg-card);
+    display: flex;
+    flex-direction: column;
+    max-width: min(50vh,800px);
+    width: 100%;
+    gap:var(--space-lg);
+    padding:var(--space-md);
+    border-radius: var(--radius-lg);
+}
+.form__heading{
+    font-weight: var(----font-weight-regular);
+}
+.form-fields{
+    padding:var(--space-sm);
+    border-radius:var(--radius-sm);
+    outline: none;
+    border:none;
+    border:2px solid var(--color-border);
+    transition: border-color 0.3s ease;
+}
+.form-fields:focus{
+    border-color: var(--color-primary-hover);
+}
+.form-addBtn{
+    padding: var(--space-sm);
+}
+.system__home-btn{
+    max-width: min(50vh,800px);
+    width: 100%;
+    padding: var(--space-sm);
+    text-align: center
+}

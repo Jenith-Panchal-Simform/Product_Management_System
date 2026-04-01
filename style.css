@@ -1,3 +1,4 @@
+@import url("create.css");
 * {
   margin: 0;
   padding: 0;
@@ -65,6 +66,10 @@
   /* ================= TRANSITIONS ================= */
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease;
+}
+a{
+  text-decoration: none;
+  color:var(--color-bg-main)
 }
 .primary {
   background-color: var(--color-primary);

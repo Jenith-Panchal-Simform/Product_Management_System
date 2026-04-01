@@ -5,7 +5,7 @@ const Router = {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const url = e.currentTarget.getAttribute("href");
-        location.hash = url; 
+        location.hash = url;
       });
     });
 
@@ -48,6 +48,10 @@ const Router = {
       if (component) {
         const html = await component();
         app.innerHTML = html;
+        if (path === "/create") {
+          const module = await import("./CreateHandler.js");
+          module.initCreate();
+        }
       } else {
         const html = await Home();
         app.innerHTML = html;
