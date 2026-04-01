@@ -171,3 +171,10 @@ a{
   flex-direction: column;
   gap: var(--space-sm);
 }
+.scroll-text {
+  max-height: 30px;   
+  overflow-y: auto;    
+  overflow-x: hidden; 
+  word-wrap: break-word; 
+  white-space: normal; 
+}

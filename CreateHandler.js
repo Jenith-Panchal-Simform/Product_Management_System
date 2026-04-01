@@ -1,6 +1,6 @@
 export function initCreate() {
   console.log("Create page JS loaded");
-let form=document.querySelector(".container__form");
+let form=document.querySelector(".system__form");
 form.addEventListener("submit",(e)=>{
     e.preventDefault()
     const id=form.elements["id"].value;

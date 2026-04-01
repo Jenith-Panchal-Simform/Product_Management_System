@@ -52,9 +52,15 @@ const Router = {
           const module = await import("./CreateHandler.js");
           module.initCreate();
         }
+         if (path === "/") {
+          const module = await import("./Home.js");
+          module.initCreate();
+        }
       } else {
         const html = await Home();
         app.innerHTML = html;
+        const module = await import("./Home.js");
+          module.initCreate();
       }
     }
 
