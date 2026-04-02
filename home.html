@@ -1,24 +1,43 @@
-    <header class="system__header">
-      <span>
-        <h1>Product Management System</h1>
-      </span>
-      <a class="system__create-btn primary btn"  type="button" aria-pressed="true" href="#/create">Create</a>
-    </header>
-    <main class="system__main main">
-      <section aria-labelledby="sort-heading" class="main__filter filter">
-            <h2 id="sort-heading">sort </h2>
-            <div role="group" aria-label="Sort by" class="filterBtn__container">
-                <button type="button" aria-pressed="true" class="filterBtn btn" data-filter data-action="name">
-                Name
-                </button>
-                <button type="button" aria-pressed="false" class="filterBtn btn" data-filter data-action="price">
-                Price
-                </button>
-            </div>
-        </section>
-
-      </section>
-      <section class="main__card-container">
-
-      </section>
-    </main>
+<header class="system__header">
+  <span>
+    <h1>Product Management System</h1>
+  </span>
+  <a
+    class="system__create-btn primary btn"
+    type="button"
+    aria-pressed="true"
+    href="#/create"
+    >Create</a
+  >
+</header>
+<main class="system__main main">
+  <section aria-labelledby="sort-heading" class="main__filter filter">
+    <div class="main__sort">
+      <h2 id="sort-heading">sort</h2>
+      <div role="group" aria-label="Sort by" class="filterBtn__container">
+        <button
+          type="button"
+          aria-pressed="true"
+          class="filterBtn btn"
+          data-filter
+          data-action="name"
+        >
+          Name
+        </button>
+        <button
+          type="button"
+          aria-pressed="false"
+          class="filterBtn btn"
+          data-filter
+          data-action="price"
+        >
+          Price
+        </button>
+      </div>
+    </div>
+    <div class="main__search">
+      <input type="text" name="search" id="search" data-search placeholder="Search">
+    </div>
+  </section>
+  <section class="main__card-container"></section>
+</main>

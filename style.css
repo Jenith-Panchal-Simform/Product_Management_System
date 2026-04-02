@@ -120,12 +120,28 @@ a{
 }
 .main__filter {
   flex: 1;
-  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
-  padding: 0 var(--space-lg);
   gap: var(--space-lg);
   font-weight: var(--font-weight-regular);
+}
+.main__sort{
+  display: flex;
+  gap: var(--space-lg);
+  padding:var(--space-lg);
+  border-radius: var(--radius-lg);
+}
+.main__search{
+  input{
+    height: 100%;
+    width: 100%;
+    outline: none; 
+    padding:var(--space-md);
+    border-radius: var(--radius-lg);
+    border: none;
+    font-size: var(--font-size-md);
+    background-color: var(--color-bg-container);
+  }
 }
 .filterBtn__container {
   display: flex;
