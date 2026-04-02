@@ -33,7 +33,6 @@ export function initHome(render) {
             if (localStorage.length === 0) {
                 return;
             }
-            const cards = document.querySelectorAll(".main__card");
             let items = [];
 
             for (let i = 0; i < localStorage.length; i++) {

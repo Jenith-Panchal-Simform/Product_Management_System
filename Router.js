@@ -40,11 +40,6 @@ const Router = {
       "/create": Create,
     };
 
-    //params get for edit
-    function getQueryParams() {
-      const params = new URLSearchParams(window.location.search);
-      return Object.fromEntries(params.entries());
-    }
     //  Render function
     async function render(path) {
       const app = document.querySelector(".app");
