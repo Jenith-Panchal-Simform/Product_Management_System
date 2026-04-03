@@ -5,12 +5,18 @@ const Router = {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const url = e.currentTarget.getAttribute("href");
-        location.hash = url;
+        history.pushState(null, "", "#" + url);
+        Router.nav(url);
       });
     });
 
     // Handle back/forward + manual hash change
     window.addEventListener("hashchange", () => {
+      const path = location.hash.slice(1) || "/";
+      Router.nav(path);
+    });
+
+    window.addEventListener("popstate", () => {
       const path = location.hash.slice(1) || "/";
       Router.nav(path);
     });

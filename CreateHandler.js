@@ -5,12 +5,12 @@ const nameInput = form.elements["name"];
 const priceInput = form.elements["price"];
 const descInput = form.elements["desc"];
 const imageInput = form.elements["image"];
-
+const submitBtn=document.querySelector(".form-addBtn")
 //for image preview and upload
 let imageVal=document.querySelector("#image-upload")
 let image=document.querySelector("#preview")
 
-
+let isEdit=false;
 //for edit
 if (id) {
   const data = JSON.parse(localStorage.getItem(id));
@@ -21,6 +21,8 @@ if (id) {
     descInput.value = data.desc;
     imageInput.value = data.image;
     image.src=data.image;
+    submitBtn.textContent = "Update";
+    isEdit=true;
   }
 }
 
@@ -31,8 +33,17 @@ form.addEventListener("submit",(e)=>{
     const price = priceInput.value;
     const desc = descInput.value;
     const image = imageInput.value;
+    if(!isEdit && localStorage.getItem(id))
+    {
+      alert("Id already exists,Please choose a different id")
+      return;
+    }
     localStorage.setItem(id,JSON.stringify({name,price,desc,image}))
-    console.log(id,name,price,desc,image)
+    if (isEdit) {
+      alert("Item edited successfully");
+    } else {
+      alert("Item added successfully");
+    }
     form.reset();
 })
 
