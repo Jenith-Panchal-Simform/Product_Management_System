@@ -31,5 +31,11 @@ form.addEventListener("submit",(e)=>{
     form.reset();
 })
 
-
+//for preview image
+let imageVal=document.querySelector("#image-upload")
+let image=document.querySelector("#preview")
+imageVal.addEventListener("change",(e)=>{
+  let val=e.target.value;
+  image.src=val
+})
 }

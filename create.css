@@ -31,3 +31,15 @@
     padding: var(--space-sm);
     text-align: center
 }
+.form__img-preview{
+    height:200px;
+    border:2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    img{
+        height: 100%;
+        width:100%;
+        background-size: cover  ;
+        border-radius: var(--radius-sm);
+
+    }
+}
