@@ -26,7 +26,6 @@ if (id) {
 
 form.addEventListener("submit",(e)=>{
     e.preventDefault()
-    console.log("Form submitted")
     const id = idInput.value;
     const name = nameInput.value;
     const price = priceInput.value;

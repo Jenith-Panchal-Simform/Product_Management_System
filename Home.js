@@ -16,6 +16,7 @@ export function initHome(render) {
                 <p>Price: ${value.price}</p>
                 <p class ="scroll-text">Desc: ${value.desc}</p>
                 <button type="button" aria-pressed="false" class="editBtn btn" data-edit data-id=${key} >Edit</button>
+                <button type="button" aria-pressed="false" class="deleteBtn btn" data-delete data-id=${key} >Delete</button>
             </div>
         </div>`;
     cardParent.innerHTML += markup;
@@ -25,10 +26,17 @@ export function initHome(render) {
   document.addEventListener("click", (e) => {
     //for edit
     if (e.target.matches("[data-edit]")) {
-      console.log("Edit button clicked");
       const id = e.target.dataset.id;
       history.pushState({}, "", `/?page=create&id=${id}`);
       render("/create");
+    }
+
+    //for delete
+    if(e.target.matches("[data-delete]"))
+    {
+      const id =e.target.dataset.id;
+      localStorage.removeItem(id);
+      render('/')
     }
     //for sort
     if (e.target.matches("[data-filter]")) {
@@ -64,7 +72,8 @@ export function initHome(render) {
                             <p>Price: ${item.price}</p>
                             <p class="scroll-text">Desc: ${item.desc}</p>
                             <button class="editBtn btn" data-edit data-id=${item.id}>Edit</button>
-                        </div>
+                            <button type="button" aria-pressed="false" class="deleteBtn btn" data-delete data-id=${item.id} >Delete</button>
+                            </div>
                         </div>`;
       });
       cardParent.innerHTML = markup;
@@ -110,6 +119,7 @@ export function initHome(render) {
                             <p>Price: ${item.price}</p>
                             <p class="scroll-text">Desc: ${item.desc}</p>
                             <button class="editBtn btn" data-edit data-id=${item.id}>Edit</button>
+                            <button type="button" aria-pressed="false" class="deleteBtn btn" data-delete data-id=${item.id} >Delete</button>
                         </div>
                         </div>`;
     });

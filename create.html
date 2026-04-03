@@ -1,12 +1,12 @@
 <form  class="system__form">
   <h1 class="form__heading">Enter Product details</h1>
-  <input type="number" name="id" id="" class="form-fields" placeholder="Id"/>
-  <input type="text" name="name" id="" class="form-fields" placeholder="Product Name"/>
+  <input type="number" name="id" id="" class="form-fields" placeholder="Id" required/>
+  <input type="text" name="name" id="" class="form-fields" placeholder="Product Name" required/>
   <!-- Price Validation -->
-  <input type="number" name="price" id=""class="form-fields" placeholder="Price"/>
-  <textarea name="desc" id="" class="form-fields form-textArea" placeholder="Description" rows=5></textarea>
+  <input type="number" name="price" id=""class="form-fields" placeholder="Price" required/>
+  <textarea name="desc" id="" class="form-fields form-textArea" placeholder="Description" rows=5 required></textarea>
   <!-- validations for only image pending -->
-  <input type="text" name="image" id="image-upload" class="form-fields" placeholder="Image link"/>
+  <input type="text" name="image" id="image-upload" class="form-fields" placeholder="Image link" required/>
  <figure class="form__img-preview">
   <img src="" alt="Image Preview" id="preview">
  </figure>

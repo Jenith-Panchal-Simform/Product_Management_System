@@ -148,11 +148,15 @@ a{
   gap: var(--space-md);
 }
 .filterBtn,
-.editBtn {
+.editBtn,.deleteBtn {
   padding: var(--space-sm) var(--space-lg);
   font-size: var(--font-size-md);
   background-color: var(--color-border);
 }
+.deleteBtn{
+  background-color: var(--color-text-secondary);
+}
+
 
 .main__card-container {
   flex: 9;
