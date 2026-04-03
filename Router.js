@@ -27,8 +27,6 @@ const Router = {
   },
 
   nav: (route) => {
-    console.log("Route:", route);
-
     //  Pages (partials)
     async function Home() {
       const res = await fetch("home.html");
