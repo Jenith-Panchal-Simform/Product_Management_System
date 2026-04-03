@@ -7,8 +7,8 @@ export function initHome(render) {
     const key = localStorage.key(i);
     const value = JSON.parse(localStorage.getItem(key));
     const markup = `<div class="main__card">
-            <figure class="card-img">
-                <img src=${value.image} alt="">
+            <figure class="card-img-container">
+                <img class="card-img" src=${value.image} alt="">
             </figure>
             <div class="card-desc">
                 <p>Id: ${key}</p>
@@ -30,7 +30,6 @@ export function initHome(render) {
       history.pushState({}, "", `/?page=create&id=${id}`);
       render("/create");
     }
-
     //for delete
     if(e.target.matches("[data-delete]"))
     {

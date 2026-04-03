@@ -166,7 +166,7 @@ a{
   gap: var(--space-md);
 }
 .main__card {
-  height: 35vh;
+  height:325px;
   max-width: 200px;
   width: 100%;
   background: var(--color-bg-card);
@@ -176,15 +176,16 @@ a{
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+
+}
+.card-img-container {
+  height:200px;
 }
 .card-img {
-  height: 50%;
-  img {
-    border-radius: var(--radius-sm);
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-  }
+  border-radius: var(--radius-sm);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
 }
 .card-desc {
   display: flex;
