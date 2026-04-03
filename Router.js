@@ -12,17 +12,27 @@ const Router = {
 
     // Handle back/forward + manual hash change
     window.addEventListener("hashchange", () => {
-      const path = location.hash.slice(1) || "/home";
-      Router.nav(path);
+      Router.nav(getRoute());
     });
-
+    
     window.addEventListener("popstate", () => {
-      const path = location.hash.slice(1) || "/home";
-      Router.nav(path);
+      Router.nav(getRoute());
     });
 
     // Initial load
-    const initialPath = location.hash.slice(1) || "/home";
+    const getRoute = () => {
+      const hashPath = location.hash.slice(1);
+      if (hashPath) return hashPath;
+    
+      const params = new URLSearchParams(window.location.search);
+      const page = params.get("page");
+    
+      if (page) return `/${page}`;
+    
+      return "/home";
+    };
+    
+    const initialPath = getRoute();
     Router.nav(initialPath);
   },
 
