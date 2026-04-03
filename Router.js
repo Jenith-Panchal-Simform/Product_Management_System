@@ -12,17 +12,17 @@ const Router = {
 
     // Handle back/forward + manual hash change
     window.addEventListener("hashchange", () => {
-      const path = location.hash.slice(1) || "/";
+      const path = location.hash.slice(1) || "/home";
       Router.nav(path);
     });
 
     window.addEventListener("popstate", () => {
-      const path = location.hash.slice(1) || "/";
+      const path = location.hash.slice(1) || "/home";
       Router.nav(path);
     });
 
     // Initial load
-    const initialPath = location.hash.slice(1) || "/";
+    const initialPath = location.hash.slice(1) || "/home";
     Router.nav(initialPath);
   },
 
@@ -40,7 +40,7 @@ const Router = {
 
     // Route map
     const routes = {
-      "/": Home,
+      "/home": Home,
       "/create": Create,
     };
 
@@ -58,15 +58,13 @@ const Router = {
           const id = params.get("id");
           module.initCreate(id);
         }
-        if (path === "/") {
+        if (path === "/home") {
           const module = await import("./Home.js");
           module.initHome(render);
         }
       } else {
-        const html = await Home();
-        app.innerHTML = html;
-        const module = await import("./Home.js");
-        module.initHome(render);
+        history.replaceState(null, "", "#/home");
+        render("/home");
       }
     }
 
