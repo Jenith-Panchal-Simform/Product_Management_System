@@ -6,6 +6,11 @@ const priceInput = form.elements["price"];
 const descInput = form.elements["desc"];
 const imageInput = form.elements["image"];
 
+//for image preview and upload
+let imageVal=document.querySelector("#image-upload")
+let image=document.querySelector("#preview")
+
+
 //for edit
 if (id) {
   const data = JSON.parse(localStorage.getItem(id));
@@ -15,6 +20,7 @@ if (id) {
     priceInput.value = data.price;
     descInput.value = data.desc;
     imageInput.value = data.image;
+    image.src=data.image;
   }
 }
 
@@ -32,8 +38,7 @@ form.addEventListener("submit",(e)=>{
 })
 
 //for preview image
-let imageVal=document.querySelector("#image-upload")
-let image=document.querySelector("#preview")
+
 imageVal.addEventListener("change",(e)=>{
   let val=e.target.value;
   image.src=val
