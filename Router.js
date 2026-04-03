@@ -5,7 +5,11 @@ const Router = {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const url = e.currentTarget.getAttribute("href");
-        history.pushState(null, "", "#" + url);
+        if (url.includes("?")) {
+          history.pushState(null, "", url);
+        } else {
+          history.pushState(null, "", "#" + url);
+        }
         Router.nav(url);
       });
     });
@@ -21,16 +25,18 @@ const Router = {
 
     // Initial load
     const getRoute = () => {
-      const hashPath = location.hash.slice(1);
-      if (hashPath) return hashPath;
-    
       const params = new URLSearchParams(window.location.search);
       const page = params.get("page");
     
       if (page) return `/${page}`;
     
+      const hashPath = location.hash.slice(1);
+      if (hashPath) return hashPath;
+    
       return "/home";
     };
+    
+    Router.nav(getRoute());
     
     const initialPath = getRoute();
     Router.nav(initialPath);
