@@ -8,19 +8,16 @@ export function initHome(render) {
 
 
   function getItems() {
-    const items = [];
+     const products = JSON.parse(localStorage.getItem("products")) || [];
 
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      const value = JSON.parse(localStorage.getItem(key));
-
-      items.push({ id: key, ...value });
-    }
-
-    return items;
+  return products.map(product => ({
+    id: product.id,
+    ...product
+  }));
   }
 
   function renderCards(items) {
+    console.log(items)
     if (!items.length) {
       cardParent.innerHTML = "<h2>No items to show</h2>";
       return;
