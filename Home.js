@@ -6,18 +6,17 @@ export function initHome(render) {
   bindEvents();
   bindSearch();
 
-
   function getItems() {
-     const products = JSON.parse(localStorage.getItem("products")) || [];
+    const products = JSON.parse(localStorage.getItem("products")) || [];
 
-  return products.map(product => ({
-    id: product.id,
-    ...product
-  }));
+    return products.map((product) => ({
+      id: product.id,
+      ...product,
+    }));
   }
 
   function renderCards(items) {
-    console.log(items)
+    console.log(items);
     if (!items.length) {
       cardParent.innerHTML = "<h2>No items to show</h2>";
       return;
@@ -54,13 +53,17 @@ export function initHome(render) {
 
     if (target.matches("[data-edit]")) {
       const id = target.dataset.id;
-      history.pushState({}, "", `/?page=create&id=${id}`);
-      render("/create");
+      // history.pushState({}, "", `/?page=create&id=${id}`);
+      // render("/create");
+    history.pushState({}, "", `#/create?id=${id}`);
+render("/create");
     }
 
     if (target.matches("[data-delete]")) {
       const id = target.dataset.id;
-      localStorage.removeItem(id);
+      let confirmation=confirm("Do you want to delete?");
+      if (!confirmation) return 
+      deleteProduct(id)
       renderCards(getItems());
     }
 
@@ -88,8 +91,8 @@ export function initHome(render) {
 
     const filtered = getItems().filter((item) =>
       Object.values(item).some((val) =>
-        String(val).toLowerCase().includes(value)
-      )
+        String(val).toLowerCase().includes(value),
+      ),
     );
 
     if (!filtered.length) {
@@ -107,5 +110,13 @@ export function initHome(render) {
       clearTimeout(timer);
       timer = setTimeout(() => cb(...args), delay);
     };
+  }
+
+  //deleteProduct
+  function deleteProduct(id) {
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    // Remove product with matching id
+    products = products.filter((product) => product.id !== id);
+    localStorage.setItem("products", JSON.stringify(products));
   }
 }

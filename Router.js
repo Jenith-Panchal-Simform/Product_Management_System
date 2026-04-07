@@ -24,17 +24,36 @@ const Router = {
     });
 
     // Initial load
-    const getRoute = () => {
-      const params = new URLSearchParams(window.location.search);
-      const page = params.get("page");
+    // const getRoute = () => {
+    //   const params = new URLSearchParams(window.location.search);
+    //   const page = params.get("page");
     
-      if (page) return `/${page}`;
+    //   if (page) return `/${page}`;
     
-      const hashPath = location.hash.slice(1);
-      if (hashPath) return hashPath;
+    //   const hashPath = location.hash.slice(1);
+    //   if (hashPath) return hashPath;
     
-      return "/home";
-    };
+    //   return "/home";
+    // };
+//     const getRoute = () => {
+//   const hashPath = location.hash.slice(1);
+//   console.log(hashPath)
+//   if (hashPath) return hashPath;
+    
+//   const params = new URLSearchParams(window.location.search);
+//   const page = params.get("page");
+//   if (page) return `/${page}`;
+
+//   return "/home";
+// };
+const getRoute = () => {
+  const hash = location.hash.slice(1); // "/create?id=03"
+
+  if (!hash) return "/home";
+
+  return hash;
+};
+
     
     Router.nav(getRoute());
     
@@ -70,8 +89,12 @@ const Router = {
         app.innerHTML = html;
         if (path === "/create") {
           const module = await import("./CreateHandler.js");
-          const params = new URLSearchParams(window.location.search);
-          const id = params.get("id");
+          // const params = new URLSearchParams(window.location.search);
+          // const id = params.get("id");
+          const hash = location.hash.slice(1);
+const [path, query] = hash.split("?");
+const params = new URLSearchParams(query);
+const id = params.get("id");
           module.initCreate(id);
         }
         if (path === "/home") {

@@ -16,15 +16,16 @@ export function initCreate(id) {
   //get Product
   function getProductById(id) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
-    console.log(products)
+    console.log(products);
     return products.find((product) => product.id === id);
   }
 
   //for edit
   if (id) {
     const data = getProductById(id);
-    console.log(data)
+    console.log(data);
     if (data) {
+      idInput.setAttribute("disabled", "");
       idInput.value = id;
       nameInput.value = data.name;
       priceInput.value = data.price;
@@ -36,14 +37,20 @@ export function initCreate(id) {
     }
   }
 
-  form.addEventListener("submit", (e) => {
+  if (!id) {
+    form.reset();
+    idInput.removeAttribute("disabled");
+    submitBtn.textContent = "Add";
+  }
+
+  form.onsubmit=(e) => {
     e.preventDefault();
     const id = idInput.value;
     const name = nameInput.value;
     const price = priceInput.value;
     const desc = descInput.value;
     const image = imageInput.value;
-    if (!isEdit && localStorage.getItem(id)) {
+    if (!isEdit && getProductById(id)) {
       alert("Id already exists,Please choose a different id");
       return;
     }
@@ -55,19 +62,23 @@ export function initCreate(id) {
       image,
     };
     let products = JSON.parse(localStorage.getItem("products")) || [];
-    products.push(newProduct);
-    localStorage.setItem("products", JSON.stringify(products));
 
+    if (isEdit) {
+      products = products.map((p) => (p.id === id ? newProduct : p));
+    } else {
+      products.push(newProduct);
+    }
+
+    localStorage.setItem("products", JSON.stringify(products));
     if (isEdit) {
       alert("Item edited successfully");
     } else {
       alert("Item added successfully");
     }
     form.reset();
-  });
+  };
 
   //for preview image
-
   imageVal.addEventListener("change", (e) => {
     let val = e.target.value;
     image.src = val;
